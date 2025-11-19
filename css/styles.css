@@ -326,12 +326,13 @@ body {
     background-color: var(--card-bg);
     border-radius: 12px;
     padding: 20px;
+    height: 100%;
     /* Уменьшим высоту, чтобы не было пустых белых областей, если нет картинки */
     min-height: 200px; 
     box-shadow: 0 4px 10px var(--shadow-light);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
 }
@@ -425,6 +426,7 @@ body {
     border-radius: 15px;
     margin-bottom: 15px;
     background-color: #eee;
+    object-fit: contain;
 }
 
 .detail-title {
@@ -1058,3 +1060,4 @@ body {
      background-color: #f0f0f0;
 
 }
+
