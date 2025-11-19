@@ -325,7 +325,7 @@ body {
 .product-card {
     background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 20px;
+    padding: 20px 25px;
     height: 100%;
     /* Уменьшим высоту, чтобы не было пустых белых областей, если нет картинки */
     min-height: 200px; 
@@ -341,7 +341,6 @@ body {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 10px;
-    padding-right: 50px; 
     display: -webkit-box;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* 🛑 Ограничение двумя строками */
@@ -1069,6 +1068,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
