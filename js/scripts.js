@@ -93,6 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- УТИЛИТЫ ---
     // --------------------------------------------------------------------------------
 
+
+
+    function roundTo990(price) {
+    // Защита от некорректных данных
+        if (!price || price < 0) return 0;
+    // Если цена меньше 1000, такую логику применять опасно (уйдет в минус), 
+    // поэтому для мелочи оставляем как есть или просто округляем до целого.
+        if (price < 1000) return Math.round(price);
+
+        const thousands = Math.floor(price / 1000) * 1000; // Например, 46000
+        const remainder = price % 1000; // Остаток
+
+        if (remainder >= 500) {
+        // Пример: 46759 -> 46000 + 990 = 46990
+            return thousands + 990;
+        } else {
+        // Пример: 46231 -> 46000 - 10 = 45990 (то есть спускаемся к предыдущей 990)
+            return thousands - 10;
+        }
+    }
     function formatPrice(price) { 
         const numericPrice = Number(price); 
     
@@ -134,10 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
     */
     function calculateFinalTotal() {
         let baseTotal = 0;
-    
+
     // 1. Рассчитываем базовую сумму (по ценам в наличных)
         cartItems.forEach(item => {
-        // Предполагается, что item.price - это базовая цена товара
             if (item.price && item.price > 0) {
                 baseTotal += item.price; 
             }
@@ -145,13 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Определяем выбранный метод оплаты
         const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'cash';
-    
+
     // 3. Получаем коэффициент наценки
         const surchargeRate = PRICE_SURCHARGE[selectedPaymentMethod] || 0.00;
-    
+
     // 4. Применяем наценку
-        const finalTotal = baseTotal * (1 + surchargeRate);
-    
+        let rawFinalTotal = baseTotal * (1 + surchargeRate);
+
+    // 🛑 5. ПРИМЕНЯЕМ МАГИЧЕСКОЕ ОКРУГЛЕНИЕ ДО 990
+    // (Только если сумма больше 0)
+        const finalTotal = rawFinalTotal > 0 ? roundTo990(rawFinalTotal) : 0;
+
         return {
             baseTotal: baseTotal,
             finalTotal: finalTotal,
@@ -1191,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             color: colorToSend
                         }
                     }),
-                    total_price: cartItems.reduce((sum, item) => sum + (item.price || 0), 0)
+                    total_price: calculateFinalTotal().finalTotal,
                 };
 
                 console.log("Отправка заказа на бэкенд:", orderData);
@@ -2360,4 +2383,5 @@ document.addEventListener('DOMContentLoaded', () => {
 //     updateCartCounter(); 
 
 // });
+
 
