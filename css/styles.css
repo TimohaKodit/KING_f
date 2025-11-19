@@ -264,7 +264,7 @@ body {
 }
 
 .banner-title {
-    font-size: 3rem; /* Чуть меньше шрифт */
+    font-size: 1.8rem; /* Чуть меньше шрифт */
     font-weight: 900;
     line-height: 1;
     margin-bottom: 5px;
@@ -1071,6 +1071,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
