@@ -724,6 +724,7 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .delivery-options input[type="radio"] {
@@ -1070,6 +1071,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
