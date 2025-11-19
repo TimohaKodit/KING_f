@@ -338,10 +338,19 @@ body {
 }
 
 .product-name {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 10px;
     padding-right: 50px; 
+    display: -webkit-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 🛑 Ограничение двумя строками */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3; /* Межстрочный интервал для равномерного распределения */
+    height: 2.6em;
+    text-align: left;
 }
 
 .product-price-row {
@@ -1060,4 +1069,5 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
