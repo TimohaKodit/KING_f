@@ -318,6 +318,8 @@ body {
      /* Устанавливаем 2 колонки по умолчанию для всех экранов, чтобы выполнить ваше требование */
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    padding: 10px;
 }
 
 /* --- Карточка Товара --- */
@@ -1068,6 +1070,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
