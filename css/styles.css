@@ -839,7 +839,8 @@ body {
 .category-dropdown {
     position: absolute;
     top: 100%; /* Начинается прямо под кнопкой */
-    left: 0;
+    left: auto;
+    right: 0;
     z-index: 1000; /* Должен быть поверх всего контента */
     
     /* Стили внешнего вида */
@@ -1071,6 +1072,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
