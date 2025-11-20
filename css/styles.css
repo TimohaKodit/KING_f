@@ -840,7 +840,7 @@ body {
     position: absolute;
     top: 100%; /* Начинается прямо под кнопкой */
     left: auto;
-    right: 0;
+    right: -52px;
     z-index: 1000; /* Должен быть поверх всего контента */
     
     /* Стили внешнего вида */
@@ -858,6 +858,7 @@ body {
     visibility: hidden;
     transform: translateY(10px); /* Небольшой сдвиг вниз для эффекта "выезда" */
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    max-width: 90vw;
 }
 
 /* 3. Класс для показа */
@@ -1072,6 +1073,7 @@ body {
      background-color: #f0f0f0;
 
 }
+
 
 
 
