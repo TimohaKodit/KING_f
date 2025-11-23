@@ -916,6 +916,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Рендеринг секций товаров
         Object.values(categoryMap).forEach(category => {
             const baseItemsArray = Object.values(category.base_items);
+            baseItemsArray.sort((a, b) => a.id - b.id);
         
         // Пропускаем категории, не соответствующие фильтру, если он активен
             if (isFilteredView && category.id !== categoryId) {
@@ -2383,5 +2384,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //     updateCartCounter(); 
 
 // });
+
 
 
