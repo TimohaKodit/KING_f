@@ -1026,9 +1026,34 @@ document.addEventListener('DOMContentLoaded', () => {
             setupGlobalListeners();
 
         } catch (error) {
-            console.error('Критическая ошибка загрузки данных с API:', error);
+            console.error('Ошибка загрузки данных:', error); // Оставляем в консоли для вас
+            
             if (productSectionsContainer) {
-                 productSectionsContainer.innerHTML = `<p class="error-message" style="color:#ff3b30; text-align: center; margin-top: 50px;">НЕ УДАЛОСЬ ЗАГРУЗИТЬ ТОВАРЫ.<br> Проверьте: <br>1) Запущен ли FastAPI на порту 8888?<br> 2) Верный ли URL API (${API_BASE_URL})?<br> 3) Работают ли эндпоинты /items/ и /categories/?</p>`;
+                // 🛑 НОВОЕ СООБЩЕНИЕ ДЛЯ ПОЛЬЗОВАТЕЛЯ
+                productSectionsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 50px 20px;">
+                        <i class="fa-solid fa-cloud-bolt" style="font-size: 50px; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3 style="color: #333; margin-bottom: 10px;">Не удалось загрузить товары</h3>
+                        <p style="color: #666; font-size: 1rem; line-height: 1.5;">
+                            Возможно, у Вас включен <b>VPN</b>.<br>
+                            Пожалуйста, отключите его и обновите страницу.
+                        </p>
+                        <p style="color: #999; font-size: 0.9rem; margin-top: 15px;">
+                            Если это не помогло, попробуйте зайти позже.<br>
+                            Мы уже работаем над решением.
+                        </p>
+                        <button onclick="location.reload()" style="
+                            margin-top: 25px; 
+                            padding: 12px 25px; 
+                            background-color: #FFC000; 
+                            border: none; 
+                            border-radius: 8px; 
+                            font-weight: bold; 
+                            cursor: pointer;">
+                            Обновить страницу
+                        </button>
+                    </div>
+                `;
             }
         }
     }
@@ -2384,6 +2409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //     updateCartCounter(); 
 
 // });
+
 
 
 
